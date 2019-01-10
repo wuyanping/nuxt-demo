@@ -1,0 +1,106 @@
+<template>
+	<div>
+		<el-data-table 
+			v-bind="tableConfig">
+			<!-- :onEdit="onEdit" -->
+		</el-data-table>
+	</div>
+</template>
+<script>
+export default {
+	name: 'dataTable',
+	data(){
+		return {
+			url: '',
+	      	tableConfig: {
+		      	"firstPage":1,
+			    "dataPath":"payload.content",
+			    "totalPath":"payload.totalElements",
+			    "hasDialog":true,
+			    "hasPagination":true,
+			    "hasOperation":true,
+			    "isTree":false,
+			    "url":"/api/v1/wyp/user",
+			    "hasNew":true,
+			    "hasEdit":true,
+			    "hasView":false,
+			    "hasDelete":true,
+			    "single":false,
+			    "extraButtons":[
+
+			    ],
+			    "columns":[
+			        {
+			            "type":"selection"
+			        },
+			        {
+			            "prop":"id",
+			            "label":"id"
+			        },
+			        {
+			            "prop":"username",
+			            "label":"用户名"
+			        },
+			        {
+			            "prop":"age",
+			            "label":"年龄"
+			        }
+			    ],
+			    "searchForm":[
+			        {
+			            "$type":"input",
+			            "$id":"username",
+			            "label":"用户名",
+			            "$el":{
+			                "placeholder":"请输入"
+			            }
+			        }
+			    ],
+			    "form":[
+			        {
+			            "$type":"input",
+			            "$id":"username",
+			            "label":"用户名",
+			            "$el":{
+			                "placeholder":"请输入"
+			            },
+			            "rules":[
+			                {
+			                    "required":true,
+			                    "message":"请输入用户名",
+			                    "trigger":"blur"
+			                }
+			            ]
+			        },
+			        {
+			            "$type":"input",
+			            "$id":"age",
+			            "label":"年龄",
+			            "$el":{
+			                "placeholder":"请输入"
+			            },
+			            "rules":[
+			                {
+			                    "required":true,
+			                    "message":"请输入年龄",
+			                    "trigger":"blur"
+			                }
+			            ]
+			        }
+			    ]
+			}
+		}
+	},
+	mounted(){
+	},
+	methods: {
+		onEdit(data,row){
+			console.log('onEdit--')
+			console.log(data)
+		}
+	}
+}
+</script>
+<style>
+
+</style>
